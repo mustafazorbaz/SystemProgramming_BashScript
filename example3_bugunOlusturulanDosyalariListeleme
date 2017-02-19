@@ -1,0 +1,18 @@
+#!/bin/bash
+
+` ls -la $1 > listeler.txt `
+dosya="listeler.txt"
+while read satir
+do
+	dizi=($satir)
+	ay=` date +%b `
+	gun=` date +%d `
+	if [[ ${dizi[5]} == $ay ]]
+	then
+		if [[ ${dizi[6]} -eq $gun ]]
+		then
+			echo $satir
+		fi
+	fi
+	
+done < $dosya

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+sinirSayi=$1
+ustSayi=$2
+sayi=1
+for ((i=1;i<sinirSayi;i++))
+do
+	for ((j=1;j<ustSayi;j++))
+	do
+		(( sayi=sayi*i ))
+	done
+	echo $sayi
+	sayi=1
+
+done

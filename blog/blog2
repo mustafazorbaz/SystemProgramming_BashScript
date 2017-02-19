@@ -1,0 +1,208 @@
+#!/bin/bash
+ 
+#İF
+#if te şartımız string bir karşılaştırma ise köşeli parantezler arasına konulur.Normal parantezde sayısal karşılaştırma yaptık kapatırken ise fi şeklinde kapattık.
+a=10 #a ya 10 degerini atayarak bir değişken belirledik.
+if(( $a == 10 )) #a nın içierigi 10 eşit mi diye kontrol ettik.
+then
+echo "a=10 " #eşit işe ekrana a=10 yazdık.
+fi
+#NOT:Burada görüldüğü gibi sayısal işlemleri ((Sayısal Karşılaştırma)) parantezler arasında yaptık.
+if(( a >= 3 ))
+then
+echo "aaa"
+fi
+#örn
+if((a>100))
+then
+echo "Evet"
+else
+echo "Hayır"
+fi
+#örn
+echo "n degeri"
+echo -n;
+if [[ $1 = -n ]] #
+then
+echo "n"
+else
+echo "p"
+fi
+ 
+if [[ -r c ]] #c dosyasının okunup okunamadıgını kontrol ediyor.
+then
+echo "C okunabilir"
+else
+echo "Okunamaz"
+fi
+ 
+a=12
+b=1
+test $a -eq $b #a ve b degerinin eşit olup oladığını kontrol ediyor.
+echo $? #bir önceki işlemi yazdırır. 0 deger gelirse dogru 1 ise yanlış deger dönmektedir.Ters mantık vardır unutmayalım.
+ 
+name="Ahmet"
+test -z $name #name uzunlugu 0 mı diye kontrol ediyor.
+echo $? #Burada 0 olmadıgı için degeri 1 olarak çıktı verdi.
+ 
+test -n $name #String uzunlugu 0 dan farklı ise
+echo $? #0 olarak ekrana bastırır.
+ 
+test $name = "Ali" #String eşitmi diye kontrolu sağladık.
+echo $?
+ 
+test -f "sil.txt" #sil.txt dosyası dizinimizde olmadıgı için 1 çıktısı verdi.
+echo $?
+ 
+test -r "sil.txt" #Dosyanın okuma izni var mı şeklinde kontrol yaptı fakat burada dosyamız olmadıgı için 1 degerini ekrana bastırdı.
+echo $?
+ 
+test -d "$HOME" #Dizin mi şeklinde kontrol yaptırdı.
+echo $?
+echo "Okunabilir ve yazılabilir mi"
+test -r "sil.txt" -a -w "sil.txt" #sil.txt dosyası okunabilir ve yazılabilir mi ?Şeklinde kontol ediyor fakat bu dosya olmadığı için okuma ve yazma özelligi yok.
+echo $?
+ 
+if who | grep -s mustafa > /dev/null >>Mustafa #Burada mustafa adında dosya var ise ve boyutu 0 dan farklı degil ise kaydetmek için >> ikitane işaret koyarak dosya ismini yazdıktan sonra içeriği yeni dosyaya kaydeder.
+then
+echo "Ubuntu da Çalışıyor"
+else
+echo "Ubuntu Çalışmıyor"
+fi
+ 
+#CASE
+#Case'te ise sarları belirledik o aralıga yazdık asec ile kapadık.
+case $1 in #Gelen paremetre degerine göre kontrol eder.
+-a) #Gelen parametre degeri a ise
+echo cmds related to option a ;; #Bu degeri yazdırır.
+-b) #Gelen deger b ise bu degeri yazdırır.
+echo cmds related to option b ;; #Bu degeri yazdırır.
+*) #a ve b den farklı bir deger ise
+echo all other options ;; #Bu metni yazdırır.
+esac
+ 
+echo "Lütfen bir deger giriniz"
+read deger #Dışarıdan bir deger aldık
+case $deger in #Bu deger case ile kontrol ediyoruz.
+1) echo "Girilen deger 1";; #Degerimiz 1 ise girilen deger 1 şeklinde yazdırdık aşagıda da 2 ve 3 için yaptık
+2) echo "Girilen deger 2";;
+3) echo "Girilen deger 3";;
+*) echo "Girilen deger 3 ten büyük";; # 1,2 ve 3 ten farklı sayılar ise 3 ten büyük şeklinde yazdırdık.
+esac
+ 
+#FOR
+#Görüldügü gibi parentez yok burada do... done arasına kodlarımızı yazarak işlem yapıyoruz.
+#Örnek 1
+harfler=(a b c d e f g h j k l m); #dizimize değerleri girdik.
+for i in ${harfler[*]} #Tüm değerleri diziden çektik.
+do
+echo $i;
+done
+ 
+#Örnek 2
+for colors in red blue yellow orange #Görüldüğü diger örnekten farklı olarak degerlerimiz dizi içinde belirledik.
+do
+echo $colors
+done
+ 
+#Örnek 3
+for i in $\* #Dizindeki ait tüm dosyaları çektik $\* dizindeki tüm dosyaları çekmek için
+do
+if who | grep -s $i >/dev/null #Kullanıcıya dosyalarını aldıktan sonra giriş için denedik.
+then
+echo $i l0gin oldu #kullanıcı dosyası varsa login oldu şeklinde mesaj verir.
+else
+echo $i l0gin olmadi #yoksa olmadı şeklinde mesajı bize iletir.
+fi
+done
+ 
+#WHİLE
+#örn
+#Bu örnekte dışarıdan bir deger olaca bunu ekran yazdıracagız eger boş ise onu yazdırmadan atlayıp sonraki adıma geçecegiz.Done girersekte işlemi sonlandıracagız.
+while echo "Please enter komut"
+read response #while içinde değer aldık.
+do
+case "$response" in #Degeri case ile kontrol ettik.
+'done') break ;; #Done işlemi ile sonlandırdık.
+'') continue ;; #Boş değer ise o adımı geçer
+* ) echo $response ;; #girilen dgeri yazdırır.
+esac
+done
+ 
+#Örnek
+#Bu örnegimizde ise girilen hayvan isminin oak olmasını istiyoruz fakat her hangi harfleri yada harfi büyük yada küçük olabilir.
+echo "Hayvan ismi gir"
+read hayvan
+case $hayvan in
+[Oo][Aa][Kk]) echo $hayvan dogru ;;
+*) echo girilen deger yanlıs ;;
+esac
+ 
+#örnek
+#Bu örnekte italyanın başkenti dogru girilene kadar tekrarlar
+echo "İtalyanın Başkenti"
+read baskent
+while test $baskent != "roma" #Burada okunan deger roma ya eşit degil ise
+do
+echo "Bu başken italyanın degil ! Lütfen tekrar gir"
+read baskent
+done
+ 
+#Örnek
+#Bu örnegimizde girilen sayı 5 olmadıgı taktirde tekrar deger ister.
+echo "Bir sayı giriniz lütfen..."
+read sayi
+while [[ $sayi -ne 5 ]] #sayı 5 degil ise while e girer -ne:Eşit değil mi sayısal terkerar tekrar sayıyı ister.
+do
+echo "Girmiş oldugunuz sayı istenilen sayı degildir."
+read sayi
+done
+echo "dogru cevap:"$sayi
+ 
+#Örnek
+#Bu örnegimizde girilen sayı 5 olmadıgı taktirde tekrar deger ister.Fakat köşeli parantez degil normal parantez kullanarak matemetiksel bir kontrol islemi yapacagız...
+echo "Sayısal işlem için bir sayı giriniz lütfen..."
+read sayi
+while (( $sayi != 5 )) #sayı 5 degil ise while e girer -ne:Eşit değil mi sayısal terkerar tekrar sayıyı ister.
+do
+echo "Girmiş oldugunuz sayı istenilen sayı degildir."
+read sayi
+done
+echo "dogru cevap:"$sayi
+ 
+#Örnek
+ 
+echo "Bir sayı giriniz."
+read sayi
+until [[ $sayi -eq 10 ]]
+do
+echo "Girilen sayı istenilen sayıya eşit değil..."
+read sayi
+done
+echo "dogru cevap:"$sayi
+ 
+#UNTİL
+#While döngüsünün tam tersidir... 1 oldugunda döner.
+echo "Lütffen bir kullanıcı ismi giriniz"
+read user
+until who | grep $user #Girilen kullanıcı yanlış bir kullanıcı ise
+do
+sleep 2 #2 mili saniye bakletiyor.
+echo "Ya dogru isim girsenelaaa :D"
+read user
+done
+echo "Dogru kullanıcı :" $user
+ 
+#SELECT
+#For gibi
+select deger in a b c d e f
+do
+echo $deger
+done
+ 
+#BASENAME
+echo basename sil.txt
+ 
+#PRİNTF
+printf "Mustafa"
+printf "ZORBAZ"

@@ -1,0 +1,32 @@
+#!/bin/bash
+echo "------------SAYI SIRALAMA ------------------"
+
+declare -a dizi
+i=0 
+j=0 
+for i in $*
+do
+	dizi[j]=$i
+	(( j++ ))
+done 
+
+
+for (( i=0;i<${#dizi[*]}; i++ ))
+do
+	for ((j=0;j<${#dizi[*]};j++ ))
+	do
+		if ((${dizi[i]} < ${dizi[j]}))
+		then
+			  temp=${dizi[i]}  
+			  dizi[i]=${dizi[j]} 
+			  dizi[j]=$temp  
+		fi
+	done
+done
+
+
+for (( i=0;i<${#dizi[*]};i++ ))
+do
+
+	echo ${dizi[i]}
+done

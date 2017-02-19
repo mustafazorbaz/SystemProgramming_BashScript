@@ -1,0 +1,157 @@
+#!/bin/bash
+
+############################ ÖRNEKLER ######################
+
+####### Example1 while #########
+<<E1
+while echo "Lütfen komut giriniz"
+do
+	read value
+	case "$value" in
+		"done") break ;;
+		"") continue ;;
+		*)
+	esac
+done
+E1
+
+####### Example2  case ############
+<<E1
+echo " What kind of tree bears acorns \?"
+read value
+case $value in
+ [Oo][Aa][Kk]) echo "Cevap dogru" ;;
+ *) echo "cevap yanlış" ;;
+esac
+
+E1
+
+####### Example3 ##########
+
+<<E1
+echo "Türkiye'nin başkenti neresidir ?"
+read answer
+if [[ $answer =~ ^[0-9]+$ ]]
+then
+	echo "Lütfen numerik deger girmeyiniz..."
+else
+	case $answer in
+		[Aa][Nn][Kk][Aa][Rr][Aa]) echo "Doğru cevap Tebrikler..." ;;
+		*) echo "Yanlış cevap" ;;
+	esac
+fi
+E1
+
+#######  Example4  while #########
+<<E1
+echo "Lütfen İtalya'nın başkentini giriniz."
+while read answer
+do
+	if [[ $answer =~ [Rr][Oo][Mm][Aa] ]] # Yada [[ $answer != [Rr][Oo][Mm][Aa] ]]
+	then
+		echo "Tebrikler bildiniz..."
+		break
+	else
+		echo "Lütfen tekrar deneyiniz..."
+	fi
+done 
+
+E1
+
+######## Example5 while ##############
+<<E1
+echo "Sistemdeki kullanıcı ismini giriniz..."
+while read userName
+do
+	sleep 2
+	if echo $LOGNAME | egrep -i $userName$ >/dev/null 
+	# who | egrep -i $userName >/dev/null YADA [[ $userName == $LOGNAME  ]] 
+	then
+		echo "Login olan kişi  $LOGNAME "
+		break
+	else
+		echo "Lütfen tekrar deneyiniz..." 
+	fi
+done
+
+E1
+######### Example6 until #############
+<<E1
+echo "Lütfen kullanıcının ismini giriz ..."
+read userName
+until echo $LOGNAME | egrep -i $userName$ >/dev/null
+do
+	sleep 2
+	echo "Lütfen tekrar denenyiniz..."
+	read userName
+done
+echo "$LOGNAME Doğru giriş..."
+
+E1
+
+
+######## Example 7 select #############
+
+select COMP in comp1 comp2 all none
+do
+  case $COMP in
+     comp1|comp2) CompConf $COMP ;;
+     all) CompConf comp1  CompConf comp2 ;;
+     none) break ;;
+     *) echo "ERROR: Invalid selection, $REPLY." ;;
+   esac
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

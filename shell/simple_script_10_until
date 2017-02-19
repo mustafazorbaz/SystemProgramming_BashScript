@@ -1,0 +1,28 @@
+#!/bin/bash
+####################    Until     #######################
+#Sonlanma durumu 1 oldugunda çıkar yani sonlanır.
+clear
+echo 
+echo "done"
+while  echo "Lütfen komut giriniz"
+read response
+do
+ case "$response" in
+  'done') break ;;
+  '"')  continue ;;
+   *) eval $response ;;
+ esac
+done
+
+echo "Örnek"
+clear
+echo "Lütfen bir login ismi giriniz "
+read login_name
+until who | grep $login_name
+do
+  sleep 5
+  echo "Yanlış isim ! Tekrar giriniz : \n"
+  read login_name
+done
+echo Login olmuş kullanıcı isimi $login_name 
+

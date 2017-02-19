@@ -1,0 +1,32 @@
+#!/bin/bash
+
+###################### YÖNTEM 1 ##########################
+<<AC
+declare -a dizi
+` top | head -3 | tail -1 > ni-deger `
+dosya="ni-deger"
+IFS=
+while read line 
+do		IFS=" "
+		dizi=($line)
+done <"$dosya"
+echo 	${dizi[6]}
+echo   ${dizi[7]}
+AC
+
+###################### YONTEM 2 #############################
+function kaydir
+{
+	
+	for ((i=0;i<7;i++))
+	do
+		if [[ $i -eq "6" ]]
+		then
+		 echo $1
+		fi
+		shift
+	done
+	echo $1
+}
+
+kaydir ` top | head -3 | tail -1 `

@@ -1,0 +1,37 @@
+#!/bin/bash
+
+echo "-------EXAMPLE ----------------"
+#Bu örnegimizde girilen sayı 5 olmadıgı taktirde tekrar deger ister.Fakat köşeli parantez degil normal parantez kullanarak matemetiksel bir kontrol islemi yapacagız...
+echo "Sayısal işlem için bir sayı giriniz lütfen..."
+read sayi
+while (( $sayi != 5 )) #sayı 5 degil ise while e girer -ne:Eşit değil mi sayısal terkerar tekrar sayıyı ister.
+do
+echo "Girmiş oldugunuz sayı istenilen sayı degildir."
+read sayi
+done
+echo "dogru cevap:"$sayi
+
+echo "---------EXAMPLE------------"
+echo "Bir sayı giriniz..."
+read sayi2
+while [[ $sayi2 -ne 5 ]]
+do
+   echo "Girilen sayı istenilen sayı değildir..."
+   read sayi2
+done
+echo TEBRİKLER...
+echo $sayi2
+
+echo "-----------EXAMPLE-------------"
+select deger in a b c d e f
+do
+ if [[ $deger=="x" ]]
+ then
+      break 
+ fi
+echo $deger
+done
+
+echo "-----------EXAMPLE ------------"
+#BASENAME
+echo basename sil.txt

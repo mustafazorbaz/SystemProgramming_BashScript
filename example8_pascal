@@ -1,0 +1,21 @@
+#!/bin/bash
+sinirSayi=$1
+sayi1=0
+sayi2=1
+yeni=0
+echo $sayi1
+echo $sayi2
+while ((  yeni <= sinirSayi ))
+do
+	
+	((yeni=sayi1+sayi2 ))
+	
+	if ((  yeni >= sinirSayi))
+	then
+		break 
+	fi
+	sayi1=$sayi2
+	sayi2=$yeni
+
+	echo $yeni
+done

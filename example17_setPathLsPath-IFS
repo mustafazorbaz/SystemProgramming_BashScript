@@ -1,0 +1,21 @@
+#!/bin/bash
+
+	lspath() {
+		OLDIFS="$IFS"
+		IFS=:
+		for DIR in $PATH
+		 do 
+				echo $DIR
+		 done
+		IFS="$OLDIFS"
+	}
+	setPath() {
+		PATH=${PATH:="/sbin:/bin"};
+		for _DIR in "$@"
+		do
+		   if [ -d "$_DIR" ] ; then
+				 PATH="$PATH":"$_DIR" ; fi
+		done
+		export PATH
+		unset _DIR
+	}

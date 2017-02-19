@@ -1,0 +1,71 @@
+#!/bin/bash
+
+#------Numeric Variables---------
+echo "------Numeric Variables---------"
+#Declaration and setting value: 
+declare -i a=100
+declare -i b=21
+declare -i sonuc
+(( sonuc=a+b ))
+echo $sonuc
+
+
+#------String Variables---------
+echo "------String Variables---------"
+kelime="Hayatta daima gerçekleri savun!"
+echo "Kelime"
+echo $kelime
+echo "$\{kelime:3}"
+echo ${kelime:3}
+echo "$\{kelime:(-2)}"
+echo ${kelime:(-2)}
+echo "$\{kelime:1:4}"
+echo ${kelime:1:4}
+echo "$\{#kelime}"
+echo ${#kelime}
+
+
+#------Array Variables---------
+echo "------Array Variables---------"
+declare -a sports #Declare işlemi dizi tanımlamada kullandık.
+sports=(basketball football soccers)
+sports[3]=tennis
+echo "$\{sports[*]}"
+echo ${sports[*]}
+echo "$\{sports[@]}"
+echo ${sports[@]}
+
+#------Command Line Variables---------
+echo "------Command Line Variables---------"
+echo $# #Dışarıdan alınan paremetre uzunlugunu yazar.
+echo "!"
+echo $!
+echo "-"
+echo $-
+echo "*"
+echo $* #Parametrelerin hepsini yazdırır.
+echo "$"
+echo $$
+echo "@"
+echo $@ #Paremetreleri dizi olarak alır
+((toplam=$1+$2+$3))
+echo $toplam
+
+
+#------Output And Quoting Variables---------
+echo "------Output And Quoting  Variables---------"
+echo -n "yes/no?"
+echo "`date +%D`"
+
+#------ Return Variables---------
+echo "------Return Variables---------"
+echo $?
+
+
+
+#------ Command Substution Variables---------
+echo "------Command Substution Variables---------"
+echo `date`
+echo `who | wc -l`
+
+

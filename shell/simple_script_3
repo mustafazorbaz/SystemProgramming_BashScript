@@ -1,0 +1,100 @@
+#!/bin/bash
+
+################  Computation on Variables   ##################
+a=7
+b=5
+((c=$a+$b))	
+echo $c
+
+x=`expr 5 + 7`
+echo "Toplama" $x 
+cikarma= `expr 6-3`
+echo "cikarma" $cikarma
+
+carpma=`expr 3*4`
+echo "carpma" $carpma
+
+bolme=`expr 24/3`
+echo "bolme" $bolme
+
+echo sum $a + $b 
+
+################ Handling Shell Variables ####################
+echo $# #Dışarıdan alınan paremetre uzunlugunu yazar.
+echo "!"
+echo $!
+echo "-"
+echo $-
+echo "*"
+echo $* #Parametrelerin hepsini yazdırır.
+echo "$"
+echo $$
+echo "@"
+echo $@ #Paremetreleri dizi olarak alır
+((toplam=$1+$2+$3))
+echo $toplam
+
+################ Passing Arguments ####################
+echo "Parametreler"
+echo "Birinci  parametre" $1
+echo "İkinci   parametre" $2
+echo "Üçüncü   parametre" $3
+echo "Dördüncü parametre" $4
+echo "Beşinci  parametre" $5 
+
+echo "Toplama expr ile"
+sum=`expr $1+$2+$3+$4+$5`
+echo $sum
+
+echo "Toplama (( parantez ile"
+((sum1=$1+$2+$3+$4+$5))
+echo $sum1
+
+################ Shift Command?  ####################
+# Parametreler 0-9 a kadar digit deger alırlar.
+# Shift komutu kullanıldığında sola dogru bir değer kayar.
+#Bir kaydırma 1.nin üzerine yazar 2. kaydırma 2. nin üzerine
+### Examples ###
+toplaSayi=0
+while [ $# -gt 0 ]
+do
+  toplaSayi=`expr $toplaSayi + $1 `
+  shift
+done
+echo toplaSayi = $toplaSayi
+
+### Examples ###
+echo  $1 
+echo "arg1= $1 arg2= $2 arg3= $3 "
+shift
+echo "arg1= $1 arg2= $2 arg3= $3 "
+shift
+echo "arg1= $1 arg2= $2 arg3= $3"
+shift
+echo "arg1= $1 arg2= $2 arg3= $3"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

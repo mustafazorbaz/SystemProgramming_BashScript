@@ -1,0 +1,54 @@
+#!/bin/bash
+#------------  For Command-----------------
+echo "------------  For  Command -----------------"
+echo "---------EXAMPLE -----------"
+for colors in red blue yellow orange
+do
+  echo $colors
+done
+
+echo "---------EXAMPLE -----------"
+for i in $*
+do
+   if who | grep -s $i > /dev/null
+   then
+       echo $i is logged in
+   else 
+       echo $i not availlable
+   fi
+done
+
+
+#----------------- While Command -----------------
+echo "------------ While Command -----------------"
+echo "---------EXAMPLE -----------"
+clear
+echo What is the Capital of Turkey \?
+read answer
+while test $answer != Ankara
+  do
+    echo No, Wrong please try again.
+    read answer
+  done
+echo This is correct.
+
+echo "---------EXAMPLE -----------"
+while echo "Please enter command"
+ read response
+ do
+  case $response in
+  'done') break ;;
+   '' ) continue ;;
+    *) eval $response ;;
+   esac 
+  done
+echo "---------EXAMPLE -----------"
+echo What kind of tree bears acorns \?
+read responce
+ case $responce in
+ [Oo][Aa][Kk] ) echo $responce is correct ;;
+ *) echo sorry,responce is wrong
+esac
+
+
+

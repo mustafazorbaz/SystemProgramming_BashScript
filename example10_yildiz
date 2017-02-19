@@ -1,0 +1,39 @@
+#!/bin/bash
+
+kenar=$1
+uzunluk=$2
+sekil='+'
+for ((i=0;i<uzunluk/2;i++))
+do
+	for ((j=1;j<uzunluk-i;j++))
+	do
+		printf "_"
+	
+	done
+	for ((j=0;j<i;j++))
+	do
+		printf "**"
+	
+	done
+
+	echo ""
+	
+done 
+bosluk="-"
+for ((i=uzunluk/2;i>0;i--))
+do
+	for ((j=1;j<uzunluk-i;j++))
+	do
+		printf "_"
+	
+	done
+	for ((j=0;j<i;j++))
+	do
+		printf "**"
+	
+	done
+
+	echo ""
+	
+done 
+

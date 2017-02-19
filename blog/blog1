@@ -1,0 +1,77 @@
+#!/bin/bash
+echo "Hello, World!"
+path=$(pwd) #pwd komutunu ile bulundugu dizini beliliyor.
+echo $PWD #Ekrana yazdırdık.
+t=100 #100 sayısını t değişkenine atadık.
+echo "\$t= $t" #t yi ekrana yazdırdık.Dikkat ederseniz burada $ işareti kullandık degişkenin değerini $ işareti ile alıyoruz çünkü
+((t=$t+2)) #t değişkeninin degerini alıp 2 ekleyerek tekkrar değişkene atadık.
+echo "\$t= $t" #aynı şekilde ekrana bastırdık.
+yazi=sevgiler #String bir veri atadık
+vazi=selamlar
+ilkucharic=${yazi:3} #Burada 3. karekterden sonrasını yazdırır. yazdırır
+sondanitib=${yazi:(-2)} #Burada ise sondan iki tanesini attık.
+aralik=${yazi:3:6} #3. karekterden sonra 6 karekter uzunlugunda yazdırır.
+echo $ilkucharic
+echo $sondanitib
+echo $aralik
+echo ${#yazi} #Yazının uzunlugunu yazdırır.
+tazi="$yazi $vazi" #iki string degişkeni birleştirip tek bir değişkene atar.
+echo $tazi
+declare -a sports #Declare işlemi dizi tanımlamada kullandık.
+sports=(basketball football tennis ski) #Dizi degişkenlerini belirledik.
+sports[4]=hockey #4. indis'e deeger atadık
+morespor=(${sports[*]} baseball) #sports dizisinin tüm elemanlarını aldık ve buna baseball diye bir deger daha ekledik.
+echo $sports #Dizimizin ilk indisi ekrana bastırılır.
+echo ${sports[2]} #2. indisimizi ekrana bastırdık.
+echo ${sports[*]} #Dizinin tüm elemanlarını ekrana bastık.
+echo ${morespor[*]}
+echo $0 #bu parametre dosyanın kendisi
+echo $1 #1 degerli parametre
+echo $# #Kaç paremetre aldıgını gösterir.
+echo a ssdadad
+echo `date +%D` #Tarihi yazdırılısını gösterdim Buradaki tırnaklara dikkat etmeliyiz normal tek tırnak degil yatay bir tek tırnak.
+echo "Please your name:"
+read name #Terminal ekranından name okuduk.
+echo Welcome to Hell $name #ekranından aldıgımız degeri yazdırarark ekranımıza mesaj veridik.
+echo "Please your name and surname:"
+read name surname #Ekranımızdan hem adını hemde soyadını aldık
+echo Welcome to Hell $name $surname
+echo $name
+echo $surname
+echo `date` #Tarihi yazdırdık. 2
+echo `who | wc -l`
+a=90
+b=12
+((c=$a+$b))
+echo $c
+echo `expr $a + $b` #paranteze gerek kalmadan expr fonksiyonu ile matematiksel işlem yapabliriz.
+#Paremetre Alma
+#echo the parameters passed are : $1, $2, $3, $4, $5 #5 adet paremetre aldık
+# echo the name of the script is : $0 #scriptin adı
+# echo the number of parameters passed are : $# #paremetre sayısı
+# sum=`expr $1 + $2 + $3 + $4 + $5` #Paremetrelerin toplamı
+# echo The sum is : $sum #Toplam paremetreler
+ 
+echo $# #Dışarıdan alınan paremetre uzunlugunu yazar.
+echo "!"
+echo $!
+echo "-"
+echo $-
+echo "*"
+echo $* #Parametrelerin hepsini yazdırır.
+echo "$"
+echo $$
+echo "@"
+echo $@ #Paremetreleri dizi olarak alır
+((toplam=$1+$2+$3))
+echo $toplam
+ 
+#Örnek
+#Bu örnekte girilen parametleri kaydırma işlemi yaparak topluyor.
+sum=0
+while [ $# -gt 0 ]
+do
+((sum=$sum+$1))
+shift
+done
+echo sum is $sum

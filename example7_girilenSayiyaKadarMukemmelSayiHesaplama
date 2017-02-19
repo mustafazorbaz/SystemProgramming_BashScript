@@ -1,0 +1,27 @@
+#!/bin/bash
+sayi=$1
+i=0
+j=0
+indis=0
+toplam=0
+declare -a dizi
+for ((i=1;i<sayi;i++))
+do
+	for (( j=1;j<i;j++ ))
+	do
+		if ((i%j==0))
+		then
+			dizi[indis]=$j
+			((indis++))
+			((toplam+=j))
+		fi
+	done
+	if ((toplam==i))
+	then
+		echo "$i sayısı MÜKEMMEL bolenle=${dizi[*]} "
+	fi
+	toplam=0
+	dizi=0
+	indis=0
+done
+

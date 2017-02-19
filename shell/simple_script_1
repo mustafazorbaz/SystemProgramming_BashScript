@@ -1,0 +1,82 @@
+#!/bin/bash
+echo "Hello,Word!"
+path=$(pwd)
+echo $path
+
+###########  Numeric Variables    ###############
+#(( expression ))
+#(( expression ))
+#e.g. (( var+=1 ))
+#e.g. (( var2=1+$var ))
+#e.g. (( var++ ))
+userCount=0
+((userCount++))
+echo $userCount
+((userCount++))
+echo $userCount
+((userCount++))
+echo $userCount
+
+###########  String Variables    ###############
+#(( var2=1+$var ))
+#userCount 3 ten itibaren devam ediyor.Biz 4. kullanıcıyı yazdıracagız.
+((userCount=1+$userCount))
+echo $userCount ". (dördüncü) Kullanıcı )"
+
+########### String Variables (cont.)  ###############
+#${string:n}
+##${string:5} # except first five chars
+##${string:(-2)} # last two chars
+#${string:n:m},
+##${string:0:4} # first to fifth
+##${string:1:3} # second to fourth
+#${#string} # length of string
+
+userName="Mustafa"
+echo $userName
+echo ${userName:6}
+echo ${userName:(-2)}
+echo ${userName:3:2}
+
+#Concatenating strings
+#string_var1="$string_var1 $string_var2"
+user1="Mustafa" user2="Hakan"
+user1AndUser2="$user1  $user2"
+echo $user1AndUser2
+
+########### Array Variables  ###############
+declare user="Fatma"
+echo ${user[1]}
+declare -a sports
+sports=(basketball football soccer)
+sports[3]=hoskey
+echo ${sports[@]}
+moresports=(${sports[@]}tennis swimmig)
+echo ${moresports[@]} #= echo ${moresports[*]}
+
+########### Command Line Arguments  ###############
+#$0 is the name of the script
+#$* is a string of all of the arguments separated by spaces, excluding $0
+#$@ is an array of the arguments, excluding $0
+#$# is the number of arguments
+
+echo "Dışarıdan alınan değişkenlerin sayısı" $#
+echo "Dışarıdan alınan değişkenler" $*
+echo "Dışarıdan alınan değişkenler DİZİ Şeklinde" $@
+ 
+########### Output and Quoting  ###############
+echo -n "yes/no?" 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

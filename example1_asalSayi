@@ -1,0 +1,41 @@
+#!/bin/bash
+
+dosya="asal-sayilar.txt"
+if [[ ! -e   $dosya ]]
+then
+	`touch $dosya `
+	echo "2" >> $dosya
+fi
+pointer=0
+while read line
+do
+	pointer=$line
+done < $dosya
+
+
+function asalMi()
+{
+      kok=`echo " sqrt($1)" | bc `
+      for ((i=2;i<=$kok;i++))
+      do
+	    
+           if (( $pointer%$i==0 ))
+	   then
+		 return 0;
+	    fi
+      done
+      return 1;
+}
+
+while (( 1 == 1))
+do
+	(( pointer++ ))
+	echo $pointer
+	asalMi $pointer
+	if [[ $? -ne 0 ]]
+	then
+	   	echo $pointer >> $dosya
+	fi	
+done
+
+

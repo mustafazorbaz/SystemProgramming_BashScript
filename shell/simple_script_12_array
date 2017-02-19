@@ -1,0 +1,11 @@
+#!/bin/bash
+####################    Array     #######################
+name[0]="Mustafa"
+name[1]="Aylin"
+name[2]="Zafer"
+name[3]="Fatma"
+name[4]="Jesica"
+echo "İlk indeks : ${name[0]}"
+echo "İkinci indeks :${name[1]}"
+echo "Tüm isimler :${name[*]}"
+echo "Tüm isimler :${name[@]}"

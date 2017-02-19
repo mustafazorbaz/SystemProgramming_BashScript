@@ -1,0 +1,170 @@
+#!/bin/bash
+
+echo "Bir sayı girin"
+read sayi
+
+((milyar=sayi/1000000000))
+sayi=$[$sayi-$milyar*1000000000];
+((yuzmilyon=sayi/100000000))
+sayi=$[$sayi-$yuzmilyon*100000000];
+((onmilyon=sayi/10000000))
+sayi=$[$sayi-$onmilyon*10000000];
+((milyon=sayi/1000000))
+sayi=$[$sayi-$milyon*1000000];
+((yuzbinler=sayi/100000))
+sayi=$[$sayi-$yuzbinler*100000];
+((onbinler=sayi/10000))
+sayi=$[$sayi-$onbinler*10000];
+((binler=sayi/1000))
+sayi=$[$sayi-$binler*1000];
+((yuzler=sayi/100))
+sayi=$[$sayi-$yuzler*100];
+((onlar=sayi/10))
+sayi=$[$sayi-$onlar*10];
+((birler=sayi/1))
+sayi=$[$sayi-$birler];
+
+
+case $milyar in 
+1) echo "birmilyar" ;;
+2) echo "ikimilyar" ;;
+3) echo "üçmilyar" ;;
+4) echo "dörtmilyar" ;;
+5) echo "beşmilyar" ;;
+6) echo "altımilyar" ;;
+7) echo "yedimilyar" ;;
+8) echo "sekizmilyar" ;;
+9) echo "dokuzmilyar" ;;
+esac
+
+
+
+case $yuzmilyon in
+1) echo "yüz" ;;
+2) echo "ikiyüz" ;;
+3) echo "üçyüz" ;;
+4) echo "dörtyüz" ;;
+5) echo "beşyüz" ;;
+6) echo "altıyüz" ;;
+7) echo "yediyüz" ;;
+8) echo "sekizyüz" ;;
+9) echo "dokuzyüz" ;;
+esac
+
+case $onmilyon in
+1) echo "on" ;;
+2) echo "yirmi" ;;
+3) echo "otuz" ;;
+4) echo "kırk" ;;
+5) echo "elli" ;;
+6) echo "altmış" ;;
+7) echo "yetmiş" ;;
+8) echo "seksen" ;;
+9) echo "doksan" ;;
+esac
+
+if (( ( $onmilyon !=0 || $yuzmilyon !=0  ) && $milyon == 0 ))
+then
+echo "milyon"
+fi
+
+
+case $milyon in 
+1) echo "birmilyon" ;;
+2) echo "ikimilyon" ;;
+3) echo "üçmilyon" ;;
+4) echo "dörtmilyon" ;;
+5) echo "beşmilyon" ;;
+6) echo "altımilyon" ;;
+7) echo "yedimilyon" ;;
+8) echo "sekizmilyon" ;;
+9) echo "dokuzmilyon" ;;
+esac
+
+case $yuzbinler in
+1) echo "yüz" ;;
+2) echo "ikiyüz" ;;
+3) echo "üçyüz" ;;
+4) echo "dörtyüz" ;;
+5) echo "beşyüz" ;;
+6) echo "altıyüz" ;;
+7) echo "yediyüz" ;;
+8) echo "sekizyüz" ;;
+9) echo "dokuzyüz" ;;
+esac
+
+
+case $onbinler in
+1) echo "on" ;;
+2) echo "yirmi" ;;
+3) echo "otuz" ;;
+4) echo "kırk" ;;
+5) echo "elli" ;;
+6) echo "altmış" ;;
+7) echo "yetmiş" ;;
+8) echo "seksen" ;;
+9) echo "doksan" ;;
+esac
+
+if (( ( $onbinler !=0 || $yuzbinler !=0  ) && $binler == 0 ))
+then
+echo "bin"
+fi
+
+
+case $binler in 
+1) echo "bin" ;;
+2) echo "ikibin" ;;
+3) echo "üçbin" ;;
+4) echo "dörtbin" ;;
+5) echo "beşbin" ;;
+6) echo "altıbin" ;;
+7) echo "yedibin" ;;
+8) echo "sekizbin" ;;
+9) echo "dokuzbin" ;;
+esac
+
+case $yuzler in
+1) echo "yüz" ;;
+2) echo "ikiyüz" ;;
+3) echo "üçyüz" ;;
+4) echo "dörtyüz" ;;
+5) echo "beşyüz" ;;
+6) echo "altıyüz" ;;
+7) echo "yediyüz" ;;
+8) echo "sekizyüz" ;;
+9) echo "dokuzyüz" ;;
+esac
+
+case $onlar in
+1) echo "on" ;;
+2) echo "yirmi" ;;
+3) echo "otuz" ;;
+4) echo "kırk" ;;
+5) echo "elli" ;;
+6) echo "altmış" ;;
+7) echo "yetmiş" ;;
+8) echo "seksen" ;;
+9) echo "doksan" ;;
+esac
+
+
+
+case $birler in 
+1) echo "bir" ;;
+2) echo "iki" ;;
+3) echo "üç" ;;
+4) echo "dört" ;;
+5) echo "beş" ;;
+6) echo "altı" ;;
+7) echo "yedi" ;;
+8) echo "sekiz" ;;
+9) echo "dokuz" ;;
+esac
+
+
+
+
+
+
+

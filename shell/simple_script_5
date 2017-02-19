@@ -1,0 +1,5 @@
+#!/bin/bash
+ls | grep "a" && rm a # a dosyası varsa a dosyasını kaldırır.
+
+
+ls | grep "x" && rm y # x dosyası varsa y dosyasını kaldırır.

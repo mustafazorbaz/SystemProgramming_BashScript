@@ -1,0 +1,159 @@
+#!/bin/bash
+
+#################### Conditional Statements #######################
+#$? # 0 başarılı anlamında 0 dan farklı olması başarısız anlamındadır.
+
+####################       Conditions       #######################
+#if using integers: (( condition ))
+#If using strings: [[ condition ]]
+#(( a  == 10  ))
+#(( b >= 3  ))
+#[[ $1 = -n  ]]
+
+#################### Conditions (cont.)     #######################
+# [[ -e  $file ]] –File exists?
+# [[ -f  $file ]] –Regular file?
+# [[ -d  $file ]] –Directory?
+# [[ -L $file ]] –Symbolic link?
+# [[ -r  $file ]] –File has read permission?
+# [[ -w $file ]] –File has write permission?
+# [[ -x  $file ]] –File has execute permission?
+# [[ -p  $file ]] –File is a pipe?
+
+echo $?
+#########################       İF      ###########################
+fname="dosya"
+
+if [[ -r $fname ]]
+then
+	echo	"$fname okunabilir"
+elif [[ -w $fname && -x $fname ]]
+then
+	echo "$fname is writable and executable"
+fi
+
+#########################    TEST      ###########################
+#$? # 0 başarılı anlamında 1  olması başarısız anlamındadır.
+#	-eq	: equal to   			#Eşit mi ?
+#	-ne   	: not equals to			#Eşit değil mi?
+#	-gt    	: grater than			#Büyük  mü ?
+#	-lt   	: less than			#Küçük  mü ?
+#	-ge  	: greater than or equal to	#Büyük eşit mi ?
+#	-le  	: less than or equal to		#Küçük eşit mi ?
+
+a=12
+b=23
+test $a -eq $b 
+echo $?
+test $a -ne $b
+echo $?
+test $a -gt $b
+echo $?
+test $a -lt $b
+echo $?
+test $a -ge $b
+echo $?
+test $a -le $b
+echo $?
+
+
+#  = 	: equality of strings
+# !=  	: not equal
+# -z	: Uzunlugu 0 mı? zero length string (i.e. 	string 		  containing zero character
+# -n 	: String length is non zero.Uzunluğu sıfırdan farklı mı?
+echo "-----"
+name="Mustafa"
+test -z $name
+echo $? "-z"
+test -n $name
+echo $? "-n"
+test != $name
+echo $? "!="
+test -z $name
+echo $?
+
+echo "------------"
+#	-f:dosya
+#	-s:dosya ve uzunluğu 0 değil
+#	-d:dizin 
+#	-r:okuma izni olan dosya
+#	-w:yazma izni olan dosya
+#	-x:Koşma izni olan dosya
+
+test -f "dosya"
+echo $? "-f"
+test -r "dosya"
+echo $? "-r"
+test -d "$HOME"
+echo $? "-d"
+
+echo "----------------"
+# 	-a	  : logical AND
+#	-o	  : logical OR
+#	 !	  : logical NOT
+
+test -r "dosya" -a -w "dosya"
+echo $? "-a"
+test -r "dosya" -o -w "dosya"
+echo $? "-o"
+test -r "dosya" ! -w "dosya"
+echo $? "!"
+
+echo "Example"
+
+if who | grep -s mustafa > /dev/null
+then
+	echo "Login oldu"
+else
+	echo "Login olmadı"
+fi
+
+####################  Case    #######################
+echo "--------Example-------"
+case $1 in
+	a)
+	  echo "cmds related  to option a" ;;
+	b)
+	  echo "cmds related  to option b" ;;
+	*)
+	  echo "all other options" ;;
+esac
+	
+echo "-------Exampele-------"
+clear
+echo "1. Date and time"
+echo
+echo "2. Directory listing"
+echo
+echo "3. Users information"
+echo
+echo "4. Current directory"
+echo
+echo "1,2,3 ve 4 ten birini seçiniz"
+
+read secim
+case $secim in
+	1) date;;
+	2) ls -l;;
+	3) who ;;
+	4) pwd ;;
+	*) echo "Lütfen 1,2,3 ve 4 ten birini seçiniz";;
+esac
+
+echo "2. Örnek  [Oo][Aa][Kk]"
+read responce
+case $responce in
+ [Oo][Aa][Kk]) echo $reponce is correct ;;
+ *) echo "Sory response is wrong"
+esac
+
+
+
+
+
+
+
+
+
+
+

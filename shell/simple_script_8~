@@ -1,0 +1,24 @@
+#!/bin/bash
+####################     For     #######################
+echo "FOR DÖNGÜSÜ"
+echo "Example"
+for colors in Red Blue Green Yellow Orange Black Gray White 
+do 
+    echo $colors
+done 
+echo 
+
+echo "Example"
+for i in $*
+do 
+   if who | grep -s $i > /dev/null
+   then
+	echo "$i login oldu"
+   else
+	echo "$i login olmadı"
+   fi
+done 
+echo 
+
+####################    While     #######################
+#Sonlanma durumu 0 oldugunda çıkar yani sonlanır.

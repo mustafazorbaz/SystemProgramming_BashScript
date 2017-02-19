@@ -1,0 +1,15 @@
+#!/bin/bash
+####################    Select     #######################
+#Sonlanma durumu 1 oldugunda çıkar yani sonlanır.
+clear
+echo 
+echo "Example"
+select COMP in comp1 comp2 all none
+do
+   case $COMP in
+    comp1|comp2) CompConf $COMP ;;
+    all) CompConf comp1 CompConf comp2 ;;
+    none) break ;;
+    *) echo "ERROR : içerik şeçiniz , $REPLY ." ;;
+   esac
+done

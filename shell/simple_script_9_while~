@@ -1,0 +1,34 @@
+#!/bin/bash
+####################    While     #######################
+#Sonlanma durumu 0 oldugunda çıkar yani sonlanır.
+while  echo "Lütfe komut giriniz"
+read response
+do
+ case "$response" in
+  'done') break ;;
+  '"')  continue ;;
+   *) eval $response ;;
+ esac
+done
+
+a=0
+while [ "$a" -lt 10 ]
+do
+     b="$a"
+     while [ "$b" -ge 0 ]
+     do
+	echo -n "$b "
+	b=`expr $b - 1`
+     done
+     echo
+     a=`expr $a + 1 `
+done
+
+b=10
+
+until [ $b -lt 10 ] # 10 küçük ve eşitse devam ediyor.
+do
+	echo $b
+	b=`expr $b + 1 `
+done
+

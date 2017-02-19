@@ -1,0 +1,46 @@
+#!/bin/bash
+
+#------------  Conditional Exec Operators-----------------
+echo "------------  Conditional Exec Operators -----------------"
+# ls | egrep "mydoc.doc" && rm mydoc.doc
+ cat mydoc.doc || echo "File Not Found"
+
+#------------  İF Operators-----------------
+echo "------------  İF  Operators -----------------"
+fileName="mydoc.doc"
+if [[ -r $fileName ]]
+then
+  echo "$fileName is readable "
+  elif [[ -w $fileName && -x $fileName ]]
+then 
+ echo "$fileName is writable and executable"
+fi
+
+echo "---------EXAMPLE -----------"
+if who | grep -s mustafa > /dev/null
+then
+   echo mustafa is logged is cs lab
+else
+   echo mustafa is not logged
+fi
+
+#------------  Test Command-----------------
+echo "------------  Test  Command -----------------"
+test -r "mydoc.doc" -a -w "mydoc.doc"
+echo $?
+
+
+#------------  Case Command-----------------
+echo "------------  Case  Command -----------------"
+echo "---------EXAMPLE -----------"
+echo "1,2,3 veya 4 numarayı seçiniz."
+read choice
+case $choice in
+	1) date  ;;
+	2) ls -l ;;
+	3) who   ;;
+	4) pwd   ;;
+	*) echo wrong choice ;;
+esac
+
+

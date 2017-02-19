@@ -1,0 +1,4 @@
+#!/bin/bash
+cat a || echo "Dosya bulunamadı" # a dosyası varsa açar yoksa bulunamadı mesajı verir.
+
+

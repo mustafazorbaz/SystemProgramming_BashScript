@@ -1,0 +1,66 @@
+#!/bin/bash
+####################    Function     #######################
+### Example 1 #####
+echo "############### Example 1  ###############"
+function1(){
+	echo "Fonksiyon1 Hello word"
+}
+function1
+
+
+### Example 2 #####
+echo "############### Example 2 ###############"
+function2(){
+	echo "Fonksiyon2 Parametreli Adı = $1 Soyadı = $2"
+}
+function2 Mustafa Zorbaz
+
+### Example 3 #####
+echo "############### Example 3 ###############"
+function3(){
+  echo "Sayılar :$1 ve $2 "
+  return ` expr $1 + $2 `
+}
+function3 40 55
+
+toplam=$?
+echo "Toplam = $toplam"
+
+
+### Example 4 #####
+echo "############### Example 4 ###############"
+
+functionB () {
+  echo " Fonksiyon B çalıştı "
+
+}
+
+functionA () {
+  echo " Fonksiyon A çalıştı "
+  functionB ()
+}
+
+
+
+functionA
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

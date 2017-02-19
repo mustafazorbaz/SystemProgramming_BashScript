@@ -1,0 +1,38 @@
+#!/bin/bash
+
+declare -a processler
+declare -a satir
+declare -a cpu
+OLDIFS=$IFS
+IFS=$'\n'
+for i in `ps -aux`
+do	
+	processler=(${processler[*]} $i)
+	IFS=$OLDIFS
+	satir=($i)
+	cpu=(${cpu[*]} ${satir[2]})
+	#echo  ${satir[2]}
+	IFS=$'\n'
+done
+echo ${cpu[*]}
+boyut=${#cpu[*]}
+echo $boyut
+deger="0.0"
+function buyukMu()
+{
+ 	durum=`echo "$1 > $2 " | bc`
+	return $durum
+}
+indis=1
+for((i=1;i<$boyut;i++))
+do	
+	buyukMu  ${cpu[$i]} $deger
+	#echo "$?"
+	if [[ $? -eq 1 ]]
+	then
+		deger=${cpu[$i]}
+		indis=$i
+	fi
+done
+echo ${processler[$indis]}
+echo $deger

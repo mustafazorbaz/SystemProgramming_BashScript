@@ -1,0 +1,22 @@
+#!/bin/bash
+
+echo "`date +%D`"
+
+################ Reading User Input   ##################
+#To read standard input into a shell script use the read command.
+#$ cat read_name
+#echo "Please enter your name:"
+#read name
+
+$cat read_name
+echo "Lütfen isminizi Giriniz"
+read name
+echo "Welcome $name"
+
+################  Command Substitution   ##################
+
+echo "TARİH"
+$echo 'date'   #=echo `date`
+$echo 'who | wc -l'
+
+

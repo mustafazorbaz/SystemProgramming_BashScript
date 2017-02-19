@@ -1,0 +1,68 @@
+#!/bin/bash
+
+file="dosyalar"
+if [[ -e  "$file" ]]
+then
+	while read dosya
+	do	
+		echo "----$dosya----"
+		if [[ -f "$dosya" ]]
+		then
+			echo "$dosya Regular file" >>uygulama8-log
+		else
+			echo "$dosya Regular file değil" >>uygulama8-log
+		fi
+		if [[ -d "$dosya" ]]
+		then
+			echo "$dosya Dizin " >>uygulama8-log
+		else
+			echo "$dosya Dizin değil " >>uygulama8-log
+		fi
+
+		if [[ -L "$dosya" ]]
+		then 
+			echo "$dosya Link"  >>uygulama8-log
+		else
+			echo "$dosya Link değil"  >>uygulama8-log
+		fi
+		
+		if [[ -r "$dosya" ]]
+		then
+			echo "$dosya Okunabilir"  >>uygulama8-log
+		else
+			echo "$dosya Okunabilir değil"  >>uygulama8-log
+		fi
+
+		if [[ -x "$dosya" ]]
+		then
+			echo "$dosya Çalıştırılabilir"  >>uygulama8-log
+		else
+			echo "$dosya Çalıştırılamaz"  >>uygulama8-log
+		fi
+
+		if [[ -w "$dosya" ]]
+		then
+			echo "$dosya Yazılabilir"  >>uygulama8-log
+		else
+			echo "$dosya Yazılamaz"  >>uygulama8-log
+		fi
+		
+		if [[ -p "$dosya" ]]
+		then
+			echo "$dosya Pipe"  >>uygulama8-log
+		else
+			echo "$dosya Pipe değil"  >>uygulama8-log
+		fi
+		
+		if [[ -s "$dosya" ]]
+		then	
+			echo "$dosya Boyut 0 dan farklı"  >>uygulama8-log 
+		else
+			echo "$dosya Boyut 0"  >>uygulama8-log 
+		fi
+		echo "------------------------------------"  >>uygulama8-log 
+	done < $file
+else
+	echo "ERROR:Uygulama8 de $file bulunamasdı..." >&2
+	`ls > dosyalar `
+fi

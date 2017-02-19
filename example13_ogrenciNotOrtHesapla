@@ -1,0 +1,18 @@
+#!/bin/bash
+echo "------------- OGRENCI NOT ORTALAMASI -----------"
+echo "Öğrenci Sayısını Giriniz :"
+read ogrSayisi
+i=0
+not=0
+toplama=0
+while (( $ogrSayisi > $i ))
+do
+  echo "Öğrenci Notunu Giriniz : "
+  read not
+  (( toplam=toplam+not ))
+  (( i++ ))
+done
+echo "NOT ortalaması"
+echo $(( toplam / ogrSayisi ))
+echo "NOT ortalaması"
+echo $(( toplam / ogrSayisi ))

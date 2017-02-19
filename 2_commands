@@ -1,0 +1,33 @@
+#!/bin/bash
+
+#------------  expr Command-----------------
+echo "------------  expr -----------------"
+#Hesaplamaları yapabilmek için kullanılan bir komuttur.
+sayi1=5
+sayi2=13
+toplam=0
+toplam=` expr $sayi1 + $sayi2 ` #toplam=` bitişik olmalıdır.
+echo $toplam
+echo "Bash Process No "$$
+
+#------------  shift Command -----------------
+echo "------------  shift Command -----------------"
+echo "---------  EXAMPLE ------------"
+echo "arg1= $1 arg2=$2 arg=$3 "
+shift
+echo "arg1= $1 arg2=$2 arg=$3 "
+shift
+echo "arg1= $1 arg2=$2 arg=$3 "
+shift
+echo "arg1= $1 arg2=$2 arg=$3 "
+
+echo "---------  EXAMPLE ------------"
+sum1=0
+while [[ $# -gt 0 ]]
+do
+  sum1=`expr $sum1 + $1`
+  shift
+done
+echo $sum1
+
+

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo "----------------KÜRENİN HACMİ ve ALANI --------------------"
+echo "Yarı Çapı Giriniz : "
+read yariCap
+pi="2.87" 
+#echo "32.0 * 1.4" | bc
+#echo $pi*$pi | bc
+echo "Kürenin Yüzey Alanı"
+echo 4*$pi*$yariCap*$yariCap | bc  
+
+echo "Kürenin Hacmi"
+echo 4/3*$pi*$yariCap*$yariCap*$yariCap | bc  
+

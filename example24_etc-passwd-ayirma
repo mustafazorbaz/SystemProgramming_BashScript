@@ -1,0 +1,9 @@
+#!/bin/bash
+
+OLDIFS=$IFS
+IFS=/
+for i in `cat ~/../../etc/passwd `
+do
+	echo $i
+done
+IFS=$OLDIFS

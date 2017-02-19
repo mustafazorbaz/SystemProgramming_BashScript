@@ -1,0 +1,34 @@
+#!/bin/bash
+
+#--------------Using basename ---------------
+echo "--------------Using basename ---------------"
+basename dnm.doc
+echo $?
+
+#--------------Until Loop ---------------
+echo "--------------Until Loop ---------------"
+clear
+echo "Please Enter User Login Name :\n"
+read loginName
+until who | grep $loginName
+do
+   sleep 2
+   echo "Wrong name ! Please try againg :\n "
+   read loginName
+done
+echo The user $loginName
+
+
+#--------------Select Loop ---------------
+echo "--------------Select Loop ---------------"
+select COMP in comp1 comp2 all none
+do
+  case $COMP in
+     comp1|comp2) CompConf $COMP ;;
+     all) CompConf comp1
+           CompConf comp2 ;;
+     none) break ;;
+     *) echo "ERROR: Invalid selection, $REPLY." ;;
+  esac
+done
+

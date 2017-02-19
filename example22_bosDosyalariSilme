@@ -1,0 +1,17 @@
+#!/bin/bash
+OLDIFS=$IFS
+IFS=$'\n'
+for i in `ls`
+do
+	echo "DOSYA ISMI : $i"
+	if [[ -s "$i" ]]
+	then
+		echo  "$i Boyut 0 dan farklı "
+	else
+		echo  "$i Boyut 0 "
+		`rm -r "$i" `
+		echo "SİLİNDİ"
+	fi
+	echo "------------"
+done
+OLDIFS=$IFS

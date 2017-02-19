@@ -1,0 +1,30 @@
+#!/bin/bash
+
+if (( $1 == 1 ))
+then
+	declare -a dizi
+	echo "Dizinin için sayı giriniz.Çıkıi için 'cikis' yaziniz..."
+	read sayi
+	while [[ $sayi != "cikis" ]]
+	do
+		if [[ $sayi =~ ^[0-9\.]+$ ]]
+		then
+			dizi=(${dizi[*]} $sayi )
+			echo $sayi >> sayilar
+			echo ${dizi[*]}
+		else
+			echo "$sayi Bu bir sayi değildir..." 
+		fi
+		echo "Lütfen sayı giriniz :"
+		read sayi
+	done
+elif [[ $1 -eq 2 ]]
+then
+	toplam=0
+	dosya="sayilar"
+	while read line
+	do
+		toplam=`echo "$line + $toplam" | bc`
+	done < $dosya
+	echo "TOPLAM :$toplam"
+fi

@@ -1,0 +1,79 @@
+#!/bin/bash
+function dirs()
+{
+	OLDIFS=$IFS
+	IFS=:
+	for i in $YIGIN
+	do
+		echo $i
+	done
+	IFS=$OLDIFS
+}
+function pushd()
+{
+	req="$1"
+	if [[ -z "$req" ]]
+	then
+		req=.
+	fi
+	
+	if [[ -d "$1" ]]
+	then 
+		cd $req > /dev/null 2>&1
+	
+		if [[ $? -eq  0 ]]
+		then
+			YIGIN="`pwd`:$YIGIN"
+			export YIGIN
+			dirs
+		else
+			echo "ERROR:Bu dizine gidilemiyor..." >&2
+		fi
+	else
+		echo "ERROR:Bu bir dizin değil" >&2
+	fi
+}
+function popdHelper()
+{	
+	POPD="$1"
+	if [[ -z $POPD ]]
+	then
+		echo "ERROR:Yıgın boş" >&2
+		return 1;
+	fi
+	shift
+	
+	if [[ -n "$1" ]]
+	then
+		YIGIN="$1"
+		shift
+		for i in $@
+		do
+			YIGIN="$YIGIN:$i"
+		done
+	else
+		YIGIN=
+	fi
+	
+	if [[ -d  "$POPD" ]]
+	then
+		cd "$POPD" > /dev/null 2>&1
+		if [[ $? -ne 0 ]]
+		then
+			echo "ERROR:Dizine gidilemiyor." >&2
+		fi
+		pwd
+	else
+		echo "ERROR:Dizin değil" >&2
+	fi
+	export YIGIN
+	unset POPD	
+
+}
+function popd()
+{
+	OLDIFS=$IFS
+	IFS=:
+	popdHelper $YIGIN
+	IFS=$OLDIFS
+}

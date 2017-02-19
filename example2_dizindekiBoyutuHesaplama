@@ -1,0 +1,12 @@
+#!/bin/bash
+
+toplam=0
+declare -a dizi
+`ls -l | egrep "^-.*$" > dosya.txt `
+while read  satir
+do
+	dizi=($satir)
+	echo ${dizi[4]}
+	(( toplam= $toplam + ${dizi[4]}))
+done < "dosya.txt"
+echo "TOPLAM :$toplam"
